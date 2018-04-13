@@ -4,14 +4,13 @@ use bincode::{deserialize, serialize};
 use futures::stream::FuturesUnordered;
 use futures::task::{self, Task};
 use futures::{future, Async, Future, Poll, Stream};
+use never::Never;
 use serde::{Deserialize, Serialize};
 use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
 use std::io;
 use std::mem;
 use std::rc::{Rc, Weak};
-
-pub enum Never {}
 
 pub trait Service {
     type State: 'static + Serialize + for<'a> Deserialize<'a>;
